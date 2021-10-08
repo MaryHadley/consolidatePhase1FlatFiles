@@ -9,5 +9,8 @@ chunksPerDir #Set this to some number you think is appropriate based on the numb
 
 outDir #Define a directory where you want your consolidated files to get written out to  
 
+In the loopChunkAndHaddFilesInTheDir function, you will need to edit the number in the [] in theSuffix in order to get a good suffix. How many back you want this number to be depends on how long the name of the file output by Crab is (Would be better to standardize the output name, will try to do so in the future)  
+
+
 
 
