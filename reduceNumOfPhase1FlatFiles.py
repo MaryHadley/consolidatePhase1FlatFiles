@@ -25,10 +25,11 @@ def chunkify(myList, numChunks):
 #print "choppedUpList is:", choppedUpList
 
 
-chunksPerDir = 3 #Set this to whatever you think is appropriate based on how many files in the directory 
+chunksPerDir = 2 #Set this to whatever you think is appropriate based on how many files in the directory 
 
-outDir = 'out_justD_14Nov2020'
+#outDir = 'out_justD_14Nov2020'
 #outDir = 'scratch_14Nov2020'
+outDir = 'scratch_12Oct2021_2'
 if not os.path.exists(outDir):
     os.makedirs(outDir)
 
@@ -42,8 +43,9 @@ def loopChunkAndHaddFilesInTheDir(pathToDir, SAFEPathToFiles):
     
     choppedUpList = list(chunkify(filesInTheDirList, chunksPerDir))
     print "choppedUpList:", choppedUpList
-    
-    theSuffix = pathToDir.replace('/', '-')[-48:] 
+    print "pathToDir.replace('/', '-')", pathToDir.replace('/', '-')
+    theSuffix = pathToDir.replace('/', '-')[-47:] 
+    #theSuffix = pathToDir.replace('/', '-')
     print 'theSuffix:', theSuffix
     counter = 0
     for i in choppedUpList:
@@ -54,7 +56,7 @@ def loopChunkAndHaddFilesInTheDir(pathToDir, SAFEPathToFiles):
         counter += 1
         print "counter is:", counter
         haddCommand += str(counter) + '.root'
-        print haddCommand
+        print "preliminary haddCommand", haddCommand
         chunkInChoppedUpListList = list(i)
         print len(chunkInChoppedUpListList)
         if len(chunkInChoppedUpListList) ==1:
@@ -63,8 +65,8 @@ def loopChunkAndHaddFilesInTheDir(pathToDir, SAFEPathToFiles):
         for el in chunkInChoppedUpListList: #el for element 
             print el
             haddCommand += SAFEPathToFiles + el 
-        print haddCommand
-        os.system(haddCommand)
+        print "final haddCommand", haddCommand
+        #os.system(haddCommand)
     return #Careful with this indentation!!!! It needs to be at the same level as the "for i in choppedUpList"!!
 #     
 
@@ -78,15 +80,7 @@ theDict = {#'/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018A_11Nov2020
              
             # '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018B_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018B_11Nov2020/201111_131222/0000/': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018B_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018B_11Nov2020/201111_131222/0000/',
              
-            #  '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018B_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018B_11Nov2020/201111_131222/0001/': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018B_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018B_11Nov2020/201111_131222/0001/',
-              
-            #  '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_UL2018_DiMu_UL2018C_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018C_11Nov2020/201111_131236/0000': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_UL2018_DiMu_UL2018C_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018C_11Nov2020/201111_131236/0000/',
-              
-            # '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_UL2018_DiMu_UL2018C_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018C_11Nov2020/201111_131236/0001': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_UL2018_DiMu_UL2018C_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018C_11Nov2020/201111_131236/0001/',
-             
-             '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018D_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018D_11Nov2020/201111_131251/0000': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018D_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018D_11Nov2020/201111_131251/0000/',
-             
-              '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018D_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018D_11Nov2020/201111_131251/0001': '  root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018D_11Nov2020/DoubleMuon/crab_DoubleMuUL_Run2018D_11Nov2020/201111_131251/0001/',
+           '/eos/uscms/store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018A_7Oct2021_6LSPerJob/DoubleMuon/crab_DoubleMuUL_Run2018A_7Oct2021_6LSPerJob/211007_155909/0000/': '   root://cmseos.fnal.gov//store/user/mhadley/Zmuon_DataJobs_DiMu_UL2018A_7Oct2021_6LSPerJob/DoubleMuon/crab_DoubleMuUL_Run2018A_7Oct2021_6LSPerJob/211007_155909/0000/' #remembebr the last / is vital!!
              
              
               }
